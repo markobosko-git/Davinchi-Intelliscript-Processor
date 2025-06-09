@@ -6,7 +6,7 @@
 # Repository details
 REPO_NAME="Davinchi-Intelliscript-Processor"
 USER_NAME="markobosko-git"
-REPO_URL="https://github.com/$USER_NAME/$REPO_NAME.git"
+REPO_URL="git@github.com:$USER_NAME/$REPO_NAME.git"
 
 echo "Starting script to push to GitHub repository: $REPO_URL"
 echo "WARNING: This will delete all content in the repository and replace it with local files."
@@ -37,26 +37,40 @@ if [ -z "$(git config --get user.email)" ]; then
     git config user.email "$email"
 fi
 
+# Get current branch name
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+if [ -z "$CURRENT_BRANCH" ]; then
+    echo "No branch detected. Creating main branch..."
+    CURRENT_BRANCH="main"
+    git checkout -b main
+fi
+echo "Using branch: $CURRENT_BRANCH"
+
 # Add remote repository
-echo "Setting remote repository..."
+echo "Setting remote repository (using SSH)..."
 if git remote | grep -q "origin"; then
     git remote set-url origin "$REPO_URL"
 else
     git remote add origin "$REPO_URL"
 fi
 
-# Add all files to staging
-echo "Adding files to staging..."
-git add .
+# Check if there are files to add
+if [ -n "$(git status --porcelain)" ]; then
+    # Add all files to staging
+    echo "Adding files to staging..."
+    git add .
 
-# Commit changes
-echo "Committing changes..."
-read -p "Enter commit message (default: 'Fresh start with local files'): " commit_message
-commit_message=${commit_message:-"Fresh start with local files"}
-git commit -m "$commit_message"
+    # Commit changes
+    echo "Committing changes..."
+    read -p "Enter commit message (default: 'Fresh start with local files'): " commit_message
+    commit_message=${commit_message:-"Fresh start with local files"}
+    git commit -m "$commit_message"
+else
+    echo "No changes detected to commit."
+fi
 
 # Force push to overwrite everything in remote repository
 echo "Force pushing to remote repository to replace all content..."
-git push -f origin master
+git push -f origin "$CURRENT_BRANCH"
 
 echo "Done! Your local directory has been pushed to $REPO_URL, replacing all previous content."
