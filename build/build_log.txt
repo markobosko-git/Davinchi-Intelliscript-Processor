@@ -1,0 +1,734 @@
+======== BUILD LOG ========
+Date: Tue 10 Jun 2025 04:36:59 IST
+Swift Files:       19
+SDK Path: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk
+==========================
+
+Checking: AppDelegate.swift
+Checking: ContentView.swift
+App/ContentView.swift:12:50: error: cannot find 'TranscriptManager' in scope
+ 10 | 
+ 11 | struct ContentView: View {
+ 12 |     @StateObject private var transcriptManager = TranscriptManager()
+    |                                                  `- error: cannot find 'TranscriptManager' in scope
+ 13 |     @StateObject private var presetManager = PresetManager()
+ 14 |     @StateObject private var apiManager = APIManager()
+
+App/ContentView.swift:13:46: error: cannot find 'PresetManager' in scope
+ 11 | struct ContentView: View {
+ 12 |     @StateObject private var transcriptManager = TranscriptManager()
+ 13 |     @StateObject private var presetManager = PresetManager()
+    |                                              `- error: cannot find 'PresetManager' in scope
+ 14 |     @StateObject private var apiManager = APIManager()
+ 15 |     @StateObject private var connectivityManager = ConnectivityManager()
+
+App/ContentView.swift:14:43: error: cannot find 'APIManager' in scope
+ 12 |     @StateObject private var transcriptManager = TranscriptManager()
+ 13 |     @StateObject private var presetManager = PresetManager()
+ 14 |     @StateObject private var apiManager = APIManager()
+    |                                           `- error: cannot find 'APIManager' in scope
+ 15 |     @StateObject private var connectivityManager = ConnectivityManager()
+ 16 |     
+
+App/ContentView.swift:15:52: error: cannot find 'ConnectivityManager' in scope
+ 13 |     @StateObject private var presetManager = PresetManager()
+ 14 |     @StateObject private var apiManager = APIManager()
+ 15 |     @StateObject private var connectivityManager = ConnectivityManager()
+    |                                                    `- error: cannot find 'ConnectivityManager' in scope
+ 16 |     
+ 17 |     var body: some View {
+
+App/ContentView.swift:117:5: error: cannot find 'MainContentView' in scope
+115 | 
+116 | #Preview {
+117 |     MainContentView()
+    |     `- error: cannot find 'MainContentView' in scope
+118 | }
+119 | 
+
+App/ContentView.swift:47:17: error: cannot find 'FileProcessingView' in scope
+ 45 |             // Main Content
+ 46 |             TabView {
+ 47 |                 FileProcessingView(transcriptManager: transcriptManager)
+    |                 `- error: cannot find 'FileProcessingView' in scope
+ 48 |                     .tabItem {
+ 49 |                         Image(systemName: "doc.text")
+
+App/ContentView.swift:53:17: error: cannot find 'AIProcessingView' in scope
+ 51 |                     }
+ 52 |                 
+ 53 |                 AIProcessingView(
+    |                 `- error: cannot find 'AIProcessingView' in scope
+ 54 |                     transcriptManager: transcriptManager,
+ 55 |                     presetManager: presetManager,
+
+App/ContentView.swift:64:17: error: cannot find 'AIDirectView' in scope
+ 62 |                 
+ 63 |                 // AI Direct Tab
+ 64 |                 AIDirectView(apiManager: apiManager)
+    |                 `- error: cannot find 'AIDirectView' in scope
+ 65 |                     .tabItem {
+ 66 |                         Image(systemName: "bubble.left.and.bubble.right")
+
+App/ContentView.swift:70:17: error: cannot find 'PresetEditorView' in scope
+ 68 |                     }
+ 69 |                 
+ 70 |                 PresetEditorView(presetManager: presetManager)
+    |                 `- error: cannot find 'PresetEditorView' in scope
+ 71 |                     .tabItem {
+ 72 |                         Image(systemName: "slider.horizontal.3")
+
+App/ContentView.swift:76:17: error: cannot find 'APIKeysView' in scope
+ 74 |                     }
+ 75 |                 
+ 76 |                 APIKeysView(apiManager: apiManager)
+    |                 `- error: cannot find 'APIKeysView' in scope
+ 77 |                     .tabItem {
+ 78 |                         Image(systemName: "key")
+Error in file: ContentView.swift
+Checking: DaVinciTranscriptProcessorApp.swift
+App/DaVinciTranscriptProcessorApp.swift:13:35: error: cannot find 'AppDelegate' in scope
+11 | @main
+12 | struct DaVinciTranscriptProcessorApp: App {
+13 |     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+   |                                   `- error: cannot find 'AppDelegate' in scope
+14 |     
+15 |     var body: some Scene {
+
+App/DaVinciTranscriptProcessorApp.swift:13:6: error: generic struct 'NSApplicationDelegateAdaptor' requires that 'NSObject' conform to 'NSApplicationDelegate'
+11 | @main
+12 | struct DaVinciTranscriptProcessorApp: App {
+13 |     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+   |      `- error: generic struct 'NSApplicationDelegateAdaptor' requires that 'NSObject' conform to 'NSApplicationDelegate'
+14 |     
+15 |     var body: some Scene {
+
+SwiftUI.NSApplicationDelegateAdaptor:6:59: note: where 'DelegateType' = 'NSObject'
+ 4 | @available(watchOS, unavailable)
+ 5 | @available(visionOS, unavailable)
+ 6 | @MainActor @preconcurrency @propertyWrapper public struct NSApplicationDelegateAdaptor<DelegateType> : DynamicProperty where DelegateType : NSObject, DelegateType : NSApplicationDelegate {
+   |                                                           `- note: where 'DelegateType' = 'NSObject'
+ 7 |     nonisolated public static func _makeProperty<V>(in buffer: inout _DynamicPropertyBuffer, container: _GraphValue<V>, fieldOffset: Int, inputs: inout _GraphInputs)
+ 8 |     @MainActor @preconcurrency public var wrappedValue: DelegateType { get }
+
+App/DaVinciTranscriptProcessorApp.swift:11:1: error: 'main' attribute cannot be used in a module that contains top-level code
+ 7 | //
+ 8 | 
+ 9 | import SwiftUI
+   | |- note: top-level code defined in this source file
+   | `- note: pass '-parse-as-library' to compiler invocation if this is intentional
+10 | 
+11 | @main
+   | `- error: 'main' attribute cannot be used in a module that contains top-level code
+12 | struct DaVinciTranscriptProcessorApp: App {
+13 |     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
+App/DaVinciTranscriptProcessorApp.swift:17:13: error: cannot find 'ContentView' in scope
+15 |     var body: some Scene {
+16 |         WindowGroup {
+17 |             ContentView()
+   |             `- error: cannot find 'ContentView' in scope
+18 |                 .frame(minWidth: 1000, minHeight: 700)
+19 |         }
+Error in file: DaVinciTranscriptProcessorApp.swift
+Checking: ViewExtensions.swift
+Checking: APIManager.swift
+Models/APIManager.swift:52:13: error: cannot find 'NotificationManager' in scope
+ 50 |     func processWithClaude(prompt: String, content: String) {
+ 51 |         guard !prompt.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+ 52 |             NotificationManager.shared.showError("Please enter a prompt first")
+    |             `- error: cannot find 'NotificationManager' in scope
+ 53 |             return
+ 54 |         }
+
+Models/APIManager.swift:57:13: error: cannot find 'NotificationManager' in scope
+ 55 |         
+ 56 |         guard !content.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+ 57 |             NotificationManager.shared.showError("No transcript content to process")
+    |             `- error: cannot find 'NotificationManager' in scope
+ 58 |             return
+ 59 |         }
+
+Models/APIManager.swift:63:13: error: cannot find 'NotificationManager' in scope
+ 61 |         let apiKey = getClaudeKey()
+ 62 |         guard !apiKey.isEmpty else {
+ 63 |             NotificationManager.shared.showError("Please enter your Claude API key in the API Keys tab")
+    |             `- error: cannot find 'NotificationManager' in scope
+ 64 |             return
+ 65 |         }
+
+Models/APIManager.swift:76:21: error: cannot find 'NotificationManager' in scope
+ 74 |                     self.claudeOutput = result
+ 75 |                     self.isClaudeProcessing = false
+ 76 |                     NotificationManager.shared.showSuccess("Claude processing completed!")
+    |                     `- error: cannot find 'NotificationManager' in scope
+ 77 |                     self.onClaudeProcessingCompleted?()
+ 78 |                 }
+
+Models/APIManager.swift:83:21: error: cannot find 'NotificationManager' in scope
+ 81 |                     self.claudeOutput = "Error: \(error.localizedDescription)"
+ 82 |                     self.isClaudeProcessing = false
+ 83 |                     NotificationManager.shared.showError("Claude error: \(error.localizedDescription)")
+    |                     `- error: cannot find 'NotificationManager' in scope
+ 84 |                     self.onClaudeProcessingCompleted?()
+ 85 |                 }
+
+Models/APIManager.swift:139:13: error: cannot find 'NotificationManager' in scope
+137 |     func processWithDeepSeek(prompt: String, content: String) {
+138 |         guard !prompt.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+139 |             NotificationManager.shared.showError("Please enter a prompt first")
+    |             `- error: cannot find 'NotificationManager' in scope
+140 |             return
+141 |         }
+
+Models/APIManager.swift:144:13: error: cannot find 'NotificationManager' in scope
+142 |         
+143 |         guard !content.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+144 |             NotificationManager.shared.showError("No transcript content to process")
+    |             `- error: cannot find 'NotificationManager' in scope
+145 |             return
+146 |         }
+
+Models/APIManager.swift:150:13: error: cannot find 'NotificationManager' in scope
+148 |         let apiKey = getDeepSeekKey()
+149 |         guard !apiKey.isEmpty else {
+150 |             NotificationManager.shared.showError("Please enter your DeepSeek API key in the API Keys tab")
+    |             `- error: cannot find 'NotificationManager' in scope
+151 |             return
+152 |         }
+
+Models/APIManager.swift:164:21: error: cannot find 'NotificationManager' in scope
+162 |                     self.deepseekOutput = self.cleanMarkdownSymbols(result)
+163 |                     self.isDeepseekProcessing = false
+164 |                     NotificationManager.shared.showSuccess("DeepSeek processing completed!")
+    |                     `- error: cannot find 'NotificationManager' in scope
+165 |                     self.onDeepSeekProcessingCompleted?()
+166 |                 }
+
+Models/APIManager.swift:171:21: error: cannot find 'NotificationManager' in scope
+169 |                     self.deepseekOutput = "Error: \(error.localizedDescription)"
+170 |                     self.isDeepseekProcessing = false
+171 |                     NotificationManager.shared.showError("DeepSeek error: \(error.localizedDescription)")
+    |                     `- error: cannot find 'NotificationManager' in scope
+172 |                     self.onDeepSeekProcessingCompleted?()
+173 |                 }
+Error in file: APIManager.swift
+Checking: ConnectivityManager.swift
+Models/ConnectivityManager.swift:66:36: warning: reference to captured var 'reachable' in concurrently-executing code; this is an error in the Swift 6 language mode
+64 |             
+65 |             await MainActor.run {
+66 |                 self.isConnected = reachable
+   |                                    `- warning: reference to captured var 'reachable' in concurrently-executing code; this is an error in the Swift 6 language mode
+67 |             }
+68 |         }
+Checking: PresetButton.swift
+Checking: PresetManager.swift
+Models/PresetManager.swift:59:17: error: no exact matches in call to instance method 'remove'
+57 |     
+58 |     func deletePreset(at indexSet: IndexSet) {
+59 |         presets.remove(atOffsets: indexSet)
+   |                 |- error: no exact matches in call to instance method 'remove'
+   |                 |- note: candidate expects value of type 'Int' for parameter #1 (got 'IndexSet')
+   |                 `- note: candidate expects value of type 'Array<PresetButton>.Index' (aka 'Int') for parameter #1 (got 'IndexSet')
+60 |         savePresets()
+61 |     }
+
+Models/PresetManager.swift:64:17: error: value of type '[PresetButton]' has no member 'move'
+62 |     
+63 |     func movePreset(from source: IndexSet, to destination: Int) {
+64 |         presets.move(fromOffsets: source, toOffset: destination)
+   |                 `- error: value of type '[PresetButton]' has no member 'move'
+65 |         savePresets()
+66 |     }
+Error in file: PresetManager.swift
+Checking: TranscriptManager.swift
+Models/TranscriptManager.swift:46:17: error: cannot find 'NotificationManager' in scope
+ 44 |                 self.parseTranscript(content)
+ 45 |                 
+ 46 |                 NotificationManager.shared.showSuccess("Transcript loaded successfully")
+    |                 `- error: cannot find 'NotificationManager' in scope
+ 47 |             }
+ 48 |         } catch {
+
+Models/TranscriptManager.swift:50:17: error: cannot find 'NotificationManager' in scope
+ 48 |         } catch {
+ 49 |             DispatchQueue.main.async {
+ 50 |                 NotificationManager.shared.showError("Failed to load transcript: \(error.localizedDescription)")
+    |                 `- error: cannot find 'NotificationManager' in scope
+ 51 |             }
+ 52 |         }
+
+Models/TranscriptManager.swift:64:13: warning: variable 'currentSpeaker' was written to, but never read
+ 62 |         // Simple parsing logic (would be more complex for real SRT/VTT)
+ 63 |         let lines = content.components(separatedBy: .newlines)
+ 64 |         var currentSpeaker = ""
+    |             `- warning: variable 'currentSpeaker' was written to, but never read
+ 65 |         var startTime = "00:00:00"
+ 66 |         var endTime = "00:00:00"
+
+Models/TranscriptManager.swift:71:21: warning: initialization of immutable value 'fullMatch' was never used; consider replacing with assignment to '_' or removing it
+ 69 |             // Example format: [10:30:15] SPEAKER: Text content
+ 70 |             if let speakerRange = line.range(of: #"^\[(.*?)\]\s+([^:]+):(.*)$"#, options: .regularExpression) {
+ 71 |                 let fullMatch = line[speakerRange]
+    |                     `- warning: initialization of immutable value 'fullMatch' was never used; consider replacing with assignment to '_' or removing it
+ 72 |                 
+ 73 |                 if let timeRange = line.range(of: #"^\[(.*?)\]"#, options: .regularExpression),
+
+Models/TranscriptManager.swift:143:9: error: cannot find 'NotificationManager' in scope
+141 |         timeRange = "00:00:00 - 00:00:00"
+142 |         
+143 |         NotificationManager.shared.showInfo("Transcript cleared")
+    |         `- error: cannot find 'NotificationManager' in scope
+144 |     }
+145 |     
+
+Models/TranscriptManager.swift:160:21: error: cannot find 'NotificationManager' in scope
+158 |                 do {
+159 |                     try transcriptContent.write(to: url, atomically: true, encoding: .utf8)
+160 |                     NotificationManager.shared.showSuccess("Transcript saved successfully")
+    |                     `- error: cannot find 'NotificationManager' in scope
+161 |                 } catch {
+162 |                     NotificationManager.shared.showError("Failed to save transcript: \(error.localizedDescription)")
+
+Models/TranscriptManager.swift:162:21: error: cannot find 'NotificationManager' in scope
+160 |                     NotificationManager.shared.showSuccess("Transcript saved successfully")
+161 |                 } catch {
+162 |                     NotificationManager.shared.showError("Failed to save transcript: \(error.localizedDescription)")
+    |                     `- error: cannot find 'NotificationManager' in scope
+163 |                 }
+164 |             }
+
+Models/TranscriptManager.swift:183:9: error: cannot find 'NotificationManager' in scope
+181 |         activeSpeakers = []
+182 |         isContentFiltered = true
+183 |         NotificationManager.shared.showInfo("All speaker filters cleared")
+    |         `- error: cannot find 'NotificationManager' in scope
+184 |     }
+185 |     
+Error in file: TranscriptManager.swift
+Checking: TranscriptSegment.swift
+Models/TranscriptSegment.swift:48:13: error: cannot find 'NotificationManager' in scope
+ 46 |             let content = try String(contentsOf: url, encoding: .utf8)
+ 47 |             handleTranscriptContent(content)
+ 48 |             NotificationManager.shared.showSuccess("File loaded successfully!")
+    |             `- error: cannot find 'NotificationManager' in scope
+ 49 |         } catch {
+ 50 |             NotificationManager.shared.showError("Failed to load file: \(error.localizedDescription)")
+
+Models/TranscriptSegment.swift:50:13: error: cannot find 'NotificationManager' in scope
+ 48 |             NotificationManager.shared.showSuccess("File loaded successfully!")
+ 49 |         } catch {
+ 50 |             NotificationManager.shared.showError("Failed to load file: \(error.localizedDescription)")
+    |             `- error: cannot find 'NotificationManager' in scope
+ 51 |         }
+ 52 |     }
+
+Models/TranscriptSegment.swift:219:13: error: cannot find 'NotificationManager' in scope
+217 |     func exportTranscript() {
+218 |         guard !transcriptContent.isEmpty else {
+219 |             NotificationManager.shared.showError("No transcript content to export")
+    |             `- error: cannot find 'NotificationManager' in scope
+220 |             return
+221 |         }
+
+Models/TranscriptSegment.swift:237:21: error: cannot find 'NotificationManager' in scope
+235 |                 do {
+236 |                     try transcriptContent.write(to: url, atomically: true, encoding: .utf8)
+237 |                     NotificationManager.shared.showSuccess("Transcript exported successfully!")
+    |                     `- error: cannot find 'NotificationManager' in scope
+238 |                 } catch {
+239 |                     NotificationManager.shared.showError("Failed to export: \(error.localizedDescription)")
+
+Models/TranscriptSegment.swift:239:21: error: cannot find 'NotificationManager' in scope
+237 |                     NotificationManager.shared.showSuccess("Transcript exported successfully!")
+238 |                 } catch {
+239 |                     NotificationManager.shared.showError("Failed to export: \(error.localizedDescription)")
+    |                     `- error: cannot find 'NotificationManager' in scope
+240 |                 }
+241 |             }
+Error in file: TranscriptSegment.swift
+Checking: KeychainHelper.swift
+Checking: NotificationManager.swift
+Utils/NotificationManager.swift:18:28: warning: 'NSUserNotification' was deprecated in macOS 11.0: All NSUserNotifications API should be replaced with UserNotifications.frameworks API
+16 |     func showSuccess(_ message: String) {
+17 |         #if os(macOS)
+18 |         let notification = NSUserNotification()
+   |                            `- warning: 'NSUserNotification' was deprecated in macOS 11.0: All NSUserNotifications API should be replaced with UserNotifications.frameworks API
+19 |         notification.title = "Success"
+20 |         notification.informativeText = message
+
+Utils/NotificationManager.swift:21:34: warning: 'NSUserNotificationDefaultSoundName' was deprecated in macOS 11.0: All NSUserNotifications API should be replaced with UserNotifications.frameworks API
+19 |         notification.title = "Success"
+20 |         notification.informativeText = message
+21 |         notification.soundName = NSUserNotificationDefaultSoundName
+   |                                  `- warning: 'NSUserNotificationDefaultSoundName' was deprecated in macOS 11.0: All NSUserNotifications API should be replaced with UserNotifications.frameworks API
+22 |         NSUserNotificationCenter.default.deliver(notification)
+23 |         #else
+
+Utils/NotificationManager.swift:22:9: warning: 'NSUserNotificationCenter' was deprecated in macOS 11.0: All NSUserNotifications API should be replaced with UserNotifications.frameworks API
+20 |         notification.informativeText = message
+21 |         notification.soundName = NSUserNotificationDefaultSoundName
+22 |         NSUserNotificationCenter.default.deliver(notification)
+   |         `- warning: 'NSUserNotificationCenter' was deprecated in macOS 11.0: All NSUserNotifications API should be replaced with UserNotifications.frameworks API
+23 |         #else
+24 |         // iOS implementation would go here if needed
+
+Utils/NotificationManager.swift:31:28: warning: 'NSUserNotification' was deprecated in macOS 11.0: All NSUserNotifications API should be replaced with UserNotifications.frameworks API
+29 |     func showError(_ message: String) {
+30 |         #if os(macOS)
+31 |         let notification = NSUserNotification()
+   |                            `- warning: 'NSUserNotification' was deprecated in macOS 11.0: All NSUserNotifications API should be replaced with UserNotifications.frameworks API
+32 |         notification.title = "Error"
+33 |         notification.informativeText = message
+
+Utils/NotificationManager.swift:34:34: warning: 'NSUserNotificationDefaultSoundName' was deprecated in macOS 11.0: All NSUserNotifications API should be replaced with UserNotifications.frameworks API
+32 |         notification.title = "Error"
+33 |         notification.informativeText = message
+34 |         notification.soundName = NSUserNotificationDefaultSoundName
+   |                                  `- warning: 'NSUserNotificationDefaultSoundName' was deprecated in macOS 11.0: All NSUserNotifications API should be replaced with UserNotifications.frameworks API
+35 |         NSUserNotificationCenter.default.deliver(notification)
+36 |         #else
+
+Utils/NotificationManager.swift:35:9: warning: 'NSUserNotificationCenter' was deprecated in macOS 11.0: All NSUserNotifications API should be replaced with UserNotifications.frameworks API
+33 |         notification.informativeText = message
+34 |         notification.soundName = NSUserNotificationDefaultSoundName
+35 |         NSUserNotificationCenter.default.deliver(notification)
+   |         `- warning: 'NSUserNotificationCenter' was deprecated in macOS 11.0: All NSUserNotifications API should be replaced with UserNotifications.frameworks API
+36 |         #else
+37 |         // iOS implementation would go here if needed
+
+Utils/NotificationManager.swift:44:28: warning: 'NSUserNotification' was deprecated in macOS 11.0: All NSUserNotifications API should be replaced with UserNotifications.frameworks API
+42 |     func showInfo(_ message: String) {
+43 |         #if os(macOS)
+44 |         let notification = NSUserNotification()
+   |                            `- warning: 'NSUserNotification' was deprecated in macOS 11.0: All NSUserNotifications API should be replaced with UserNotifications.frameworks API
+45 |         notification.title = "Information"
+46 |         notification.informativeText = message
+
+Utils/NotificationManager.swift:47:34: warning: 'NSUserNotificationDefaultSoundName' was deprecated in macOS 11.0: All NSUserNotifications API should be replaced with UserNotifications.frameworks API
+45 |         notification.title = "Information"
+46 |         notification.informativeText = message
+47 |         notification.soundName = NSUserNotificationDefaultSoundName
+   |                                  `- warning: 'NSUserNotificationDefaultSoundName' was deprecated in macOS 11.0: All NSUserNotifications API should be replaced with UserNotifications.frameworks API
+48 |         NSUserNotificationCenter.default.deliver(notification)
+49 |         #else
+
+Utils/NotificationManager.swift:48:9: warning: 'NSUserNotificationCenter' was deprecated in macOS 11.0: All NSUserNotifications API should be replaced with UserNotifications.frameworks API
+46 |         notification.informativeText = message
+47 |         notification.soundName = NSUserNotificationDefaultSoundName
+48 |         NSUserNotificationCenter.default.deliver(notification)
+   |         `- warning: 'NSUserNotificationCenter' was deprecated in macOS 11.0: All NSUserNotifications API should be replaced with UserNotifications.frameworks API
+49 |         #else
+50 |         // iOS implementation would go here if needed
+Checking: AIDirectView.swift
+Views/AIDirectView.swift:12:37: error: cannot find type 'APIManager' in scope
+ 10 | 
+ 11 | struct AIDirectView: View {
+ 12 |     @ObservedObject var apiManager: APIManager
+    |                                     `- error: cannot find type 'APIManager' in scope
+ 13 |     @State private var selectedAI: AIModel = .claude
+ 14 |     @State private var messageText = ""
+
+Views/AIDirectView.swift:27:17: error: cannot find 'SectionHeader' in scope
+ 25 |             // Left Panel - AI Selection
+ 26 |             VStack(spacing: 20) {
+ 27 |                 SectionHeader(icon: "bubble.left.and.text.bubble.right", title: "Direct AI Chat")
+    |                 `- error: cannot find 'SectionHeader' in scope
+ 28 |                 
+ 29 |                 VStack(spacing: 12) {
+
+Views/AIDirectView.swift:120:34: error: cannot find 'SecondaryButtonStyle' in scope
+118 |                         }
+119 |                     }
+120 |                     .buttonStyle(SecondaryButtonStyle())
+    |                                  `- error: cannot find 'SecondaryButtonStyle' in scope
+121 |                 }
+122 |                 .padding()
+
+Views/AIDirectView.swift:162:34: error: cannot find 'PrimaryButtonStyle' in scope
+160 |                         }
+161 |                     }
+162 |                     .buttonStyle(PrimaryButtonStyle())
+    |                                  `- error: cannot find 'PrimaryButtonStyle' in scope
+163 |                     .disabled(messageText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || isSending)
+164 |                 }
+
+Views/AIDirectView.swift:181:25: error: type '()' cannot conform to 'View'
+179 |                 withAnimation {
+180 |                     ScrollViewReader { scrollView in
+181 |                         scrollView.scrollTo("bottom", anchor: .bottom)
+    |                         |- error: type '()' cannot conform to 'View'
+    |                         |- note: only concrete types such as structs, enums and classes can conform to protocols
+    |                         `- note: required by static method 'buildExpression' where 'Content' = '()'
+182 |                     }
+183 |                 }
+
+Views/AIDirectView.swift:264:19: error: cannot find 'APIError' in scope
+262 |         
+263 |         guard let httpResponse = response as? HTTPURLResponse else {
+264 |             throw APIError.invalidResponse
+    |                   `- error: cannot find 'APIError' in scope
+265 |         }
+266 |         
+
+Views/AIDirectView.swift:271:23: error: cannot find 'APIError' in scope
+269 |                let error = errorData["error"] as? [String: Any],
+270 |                let message = error["message"] as? String {
+271 |                 throw APIError.apiError(message)
+    |                       `- error: cannot find 'APIError' in scope
+272 |             }
+273 |             throw APIError.httpError(httpResponse.statusCode)
+
+Views/AIDirectView.swift:273:19: error: cannot find 'APIError' in scope
+271 |                 throw APIError.apiError(message)
+272 |             }
+273 |             throw APIError.httpError(httpResponse.statusCode)
+    |                   `- error: cannot find 'APIError' in scope
+274 |         }
+275 |         
+
+Views/AIDirectView.swift:280:19: error: cannot find 'APIError' in scope
+278 |               let firstContent = content.first,
+279 |               let text = firstContent["text"] as? String else {
+280 |             throw APIError.invalidResponse
+    |                   `- error: cannot find 'APIError' in scope
+281 |         }
+282 |         
+
+Views/AIDirectView.swift:315:19: error: cannot find 'APIError' in scope
+313 |         
+314 |         guard let httpResponse = response as? HTTPURLResponse else {
+315 |             throw APIError.invalidResponse
+    |                   `- error: cannot find 'APIError' in scope
+316 |         }
+317 |         
+
+Views/AIDirectView.swift:322:23: error: cannot find 'APIError' in scope
+320 |                let error = errorData["error"] as? [String: Any],
+321 |                let message = error["message"] as? String {
+322 |                 throw APIError.apiError(message)
+    |                       `- error: cannot find 'APIError' in scope
+323 |             }
+324 |             throw APIError.httpError(httpResponse.statusCode)
+
+Views/AIDirectView.swift:324:19: error: cannot find 'APIError' in scope
+322 |                 throw APIError.apiError(message)
+323 |             }
+324 |             throw APIError.httpError(httpResponse.statusCode)
+    |                   `- error: cannot find 'APIError' in scope
+325 |         }
+326 |         
+
+Views/AIDirectView.swift:332:19: error: cannot find 'APIError' in scope
+330 |               let message = firstChoice["message"] as? [String: Any],
+331 |               let content = message["content"] as? String else {
+332 |             throw APIError.invalidResponse
+    |                   `- error: cannot find 'APIError' in scope
+333 |         }
+334 |         
+
+Views/AIDirectView.swift:358:47: error: extraneous argument label 'hex:' in call
+356 |                 if isSelected {
+357 |                     Image(systemName: "checkmark.circle.fill")
+358 |                         .foregroundColor(Color(hex: "4a9eff"))
+    |                                               `- error: extraneous argument label 'hex:' in call
+359 |                 }
+360 |             }
+
+Views/AIDirectView.swift:362:43: error: extraneous argument label 'hex:' in call
+360 |             }
+361 |             .padding()
+362 |             .background(isSelected ? Color(hex: "4a9eff").opacity(0.3) : Color(hex: "2d2d2d"))
+    |                                           `- error: extraneous argument label 'hex:' in call
+363 |             .cornerRadius(8)
+364 |         }
+
+Views/AIDirectView.swift:362:79: error: extraneous argument label 'hex:' in call
+360 |             }
+361 |             .padding()
+362 |             .background(isSelected ? Color(hex: "4a9eff").opacity(0.3) : Color(hex: "2d2d2d"))
+    |                                                                               `- error: extraneous argument label 'hex:' in call
+363 |             .cornerRadius(8)
+364 |         }
+
+Views/AIDirectView.swift:406:30: error: cannot find 'UIScreen' in scope
+404 |                     .foregroundColor(.secondary)
+405 |             }
+406 |             .frame(maxWidth: UIScreen.main.bounds.width * 0.7, alignment: message.isUser ? .trailing : .leading)
+    |                              `- error: cannot find 'UIScreen' in scope
+407 |             
+408 |             if !message.isUser {
+Error in file: AIDirectView.swift
+Checking: AIProcessingView.swift
+Checking: APIKeysView.swift
+Checking: FileProcessingView.swift
+Checking: MainAppView.swift
+Views/MainAppView.swift:12:42: error: cannot find 'TranscriptManager' in scope
+ 10 | 
+ 11 | struct MainAppView: View {
+ 12 |     @StateObject var transcriptManager = TranscriptManager()
+    |                                          `- error: cannot find 'TranscriptManager' in scope
+ 13 |     @StateObject var presetManager = PresetManager()
+ 14 |     @StateObject var apiManager = APIManager()
+
+Views/MainAppView.swift:13:38: error: cannot find 'PresetManager' in scope
+ 11 | struct MainAppView: View {
+ 12 |     @StateObject var transcriptManager = TranscriptManager()
+ 13 |     @StateObject var presetManager = PresetManager()
+    |                                      `- error: cannot find 'PresetManager' in scope
+ 14 |     @StateObject var apiManager = APIManager()
+ 15 |     @StateObject var connectivityManager = ConnectivityManager()
+
+Views/MainAppView.swift:14:35: error: cannot find 'APIManager' in scope
+ 12 |     @StateObject var transcriptManager = TranscriptManager()
+ 13 |     @StateObject var presetManager = PresetManager()
+ 14 |     @StateObject var apiManager = APIManager()
+    |                                   `- error: cannot find 'APIManager' in scope
+ 15 |     @StateObject var connectivityManager = ConnectivityManager()
+ 16 |     @State private var selectedTab = 0
+
+Views/MainAppView.swift:15:44: error: cannot find 'ConnectivityManager' in scope
+ 13 |     @StateObject var presetManager = PresetManager()
+ 14 |     @StateObject var apiManager = APIManager()
+ 15 |     @StateObject var connectivityManager = ConnectivityManager()
+    |                                            `- error: cannot find 'ConnectivityManager' in scope
+ 16 |     @State private var selectedTab = 0
+ 17 |     
+
+Views/MainAppView.swift:94:17: error: cannot find 'FileProcessingView' in scope
+ 92 |             ZStack {
+ 93 |                 // File Processing View
+ 94 |                 FileProcessingView(transcriptManager: transcriptManager)
+    |                 `- error: cannot find 'FileProcessingView' in scope
+ 95 |                     .opacity(selectedTab == 0 ? 1 : 0)
+ 96 |                     .disabled(selectedTab != 0)
+
+Views/MainAppView.swift:99:17: error: cannot find 'AIProcessingView' in scope
+ 97 |                 
+ 98 |                 // AI Processing View
+ 99 |                 AIProcessingView(
+    |                 `- error: cannot find 'AIProcessingView' in scope
+100 |                     transcriptManager: transcriptManager, 
+101 |                     presetManager: presetManager, 
+
+Views/MainAppView.swift:108:17: error: cannot find 'AIDirectView' in scope
+106 |                 
+107 |                 // AI Direct View (New)
+108 |                 AIDirectView(apiManager: apiManager)
+    |                 `- error: cannot find 'AIDirectView' in scope
+109 |                     .opacity(selectedTab == 2 ? 1 : 0)
+110 |                     .disabled(selectedTab != 2)
+
+Views/MainAppView.swift:113:17: error: cannot find 'PresetEditorView' in scope
+111 |                 
+112 |                 // Preset Editor View
+113 |                 PresetEditorView(presetManager: presetManager)
+    |                 `- error: cannot find 'PresetEditorView' in scope
+114 |                     .opacity(selectedTab == 3 ? 1 : 0)
+115 |                     .disabled(selectedTab != 3)
+
+Views/MainAppView.swift:118:17: error: cannot find 'APIKeysView' in scope
+116 |                 
+117 |                 // API Keys View
+118 |                 APIKeysView(apiManager: apiManager)
+    |                 `- error: cannot find 'APIKeysView' in scope
+119 |                     .opacity(selectedTab == 4 ? 1 : 0)
+120 |                     .disabled(selectedTab != 4)
+
+Views/MainAppView.swift:146:43: error: extraneous argument label 'hex:' in call
+144 |             .frame(maxWidth: .infinity)
+145 |             .padding(.vertical, 12)
+146 |             .background(isSelected ? Color(hex: "4a9eff").opacity(0.2) : Color.clear)
+    |                                           `- error: extraneous argument label 'hex:' in call
+147 |             .foregroundColor(isSelected ? Color(hex: "4a9eff") : .gray)
+148 |         }
+
+Views/MainAppView.swift:147:48: error: extraneous argument label 'hex:' in call
+145 |             .padding(.vertical, 12)
+146 |             .background(isSelected ? Color(hex: "4a9eff").opacity(0.2) : Color.clear)
+147 |             .foregroundColor(isSelected ? Color(hex: "4a9eff") : .gray)
+    |                                                `- error: extraneous argument label 'hex:' in call
+148 |         }
+149 |         .buttonStyle(PlainButtonStyle())
+Error in file: MainAppView.swift
+Checking: MainContentView.swift
+Views/MainContentView.swift:12:50: error: cannot find 'TranscriptManager' in scope
+ 10 | 
+ 11 | struct ContentView: View {
+ 12 |     @StateObject private var transcriptManager = TranscriptManager()
+    |                                                  `- error: cannot find 'TranscriptManager' in scope
+ 13 |     @StateObject private var presetManager = PresetManager()
+ 14 |     @StateObject private var apiManager = APIManager()
+
+Views/MainContentView.swift:13:46: error: cannot find 'PresetManager' in scope
+ 11 | struct ContentView: View {
+ 12 |     @StateObject private var transcriptManager = TranscriptManager()
+ 13 |     @StateObject private var presetManager = PresetManager()
+    |                                              `- error: cannot find 'PresetManager' in scope
+ 14 |     @StateObject private var apiManager = APIManager()
+ 15 |     @StateObject private var connectivityManager = ConnectivityManager()
+
+Views/MainContentView.swift:14:43: error: cannot find 'APIManager' in scope
+ 12 |     @StateObject private var transcriptManager = TranscriptManager()
+ 13 |     @StateObject private var presetManager = PresetManager()
+ 14 |     @StateObject private var apiManager = APIManager()
+    |                                           `- error: cannot find 'APIManager' in scope
+ 15 |     @StateObject private var connectivityManager = ConnectivityManager()
+ 16 |     
+
+Views/MainContentView.swift:15:52: error: cannot find 'ConnectivityManager' in scope
+ 13 |     @StateObject private var presetManager = PresetManager()
+ 14 |     @StateObject private var apiManager = APIManager()
+ 15 |     @StateObject private var connectivityManager = ConnectivityManager()
+    |                                                    `- error: cannot find 'ConnectivityManager' in scope
+ 16 |     
+ 17 |     var body: some View {
+
+Views/MainContentView.swift:117:5: error: cannot call value of non-function type 'module<MainContentView>'
+115 | 
+116 | #Preview {
+117 |     MainContentView()
+    |     `- error: cannot call value of non-function type 'module<MainContentView>'
+118 | }
+
+Views/MainContentView.swift:47:17: error: cannot find 'FileProcessingView' in scope
+ 45 |             // Main Content
+ 46 |             TabView {
+ 47 |                 FileProcessingView(transcriptManager: transcriptManager)
+    |                 `- error: cannot find 'FileProcessingView' in scope
+ 48 |                     .tabItem {
+ 49 |                         Image(systemName: "doc.text")
+
+Views/MainContentView.swift:53:17: error: cannot find 'AIProcessingView' in scope
+ 51 |                     }
+ 52 |                 
+ 53 |                 AIProcessingView(
+    |                 `- error: cannot find 'AIProcessingView' in scope
+ 54 |                     transcriptManager: transcriptManager,
+ 55 |                     presetManager: presetManager,
+
+Views/MainContentView.swift:64:17: error: cannot find 'AIDirectView' in scope
+ 62 |                 
+ 63 |                 // New AI Direct Tab
+ 64 |                 AIDirectView(apiManager: apiManager)
+    |                 `- error: cannot find 'AIDirectView' in scope
+ 65 |                     .tabItem {
+ 66 |                         Image(systemName: "bubble.left.and.bubble.right")
+
+Views/MainContentView.swift:70:17: error: cannot find 'PresetEditorView' in scope
+ 68 |                     }
+ 69 |                 
+ 70 |                 PresetEditorView(presetManager: presetManager)
+    |                 `- error: cannot find 'PresetEditorView' in scope
+ 71 |                     .tabItem {
+ 72 |                         Image(systemName: "slider.horizontal.3")
+
+Views/MainContentView.swift:76:17: error: cannot find 'APIKeysView' in scope
+ 74 |                     }
+ 75 |                 
+ 76 |                 APIKeysView(apiManager: apiManager)
+    |                 `- error: cannot find 'APIKeysView' in scope
+ 77 |                     .tabItem {
+ 78 |                         Image(systemName: "key")
+Error in file: MainContentView.swift
+Checking: PresetEditorView.swift
